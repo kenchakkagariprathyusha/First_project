@@ -1,0 +1,455 @@
+        -:    0:Source:all_Stubs.c
+        -:    0:Graph:all_Stubs.gcno
+        -:    0:Data:all_Stubs.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include<stdio.h>
+        -:    2:#include<string.h>
+        -:    3:#include<stdlib.h>
+        -:    4:#include<assert.h>
+        -:    5:#include<ctype.h>
+        -:    6:#include<time.h>
+        -:    7:char a[9]={'1','2','3','4','5','6','7','8','9'};
+        -:    8:
+    #####:    9:void check(char position,char symbol)
+        -:   10:{
+        -:   11:	int i;
+    #####:   12:	for(i=0;i<=8;i++)
+        -:   13:	{
+    #####:   14:		if(a[i]==position)
+        -:   15:		{
+    #####:   16:			a[i]=symbol;
+        -:   17:			
+        -:   18:		}
+        -:   19:
+        -:   20:	}
+    #####:   21:}
+        7:   22:int checkStub(char pos,char sym)
+        -:   23:{
+        -:   24:    //printf("%c\n",pos);
+        -:   25:    //printf("%c\n",sym);
+        7:   26:    int check_pos=atoi(&pos);//atoi is used to convert character to integer.
+        7:   27:    if((check_pos<=9 && check_pos>=1) && (sym=='0' || sym=='X' || sym=='x'))
+        -:   28:    {
+        3:   29:        printf("Entered correct values\n");
+        3:   30:        return 1;
+        -:   31:    }
+        -:   32:    else
+        -:   33:    {
+        4:   34:        printf("Entered wrong values\n");
+        4:   35:        return 1;
+        -:   36:    }
+        -:   37:    
+        -:   38:}
+        1:   39:void testcaseofcheck()
+        -:   40:{
+        1:   41:    if(checkStub('1','x'))
+        -:   42:    {
+        1:   43:        printf("Test Case is passed\n");
+        -:   44:    }
+        1:   45:    if(checkStub('2','y'))
+        -:   46:    {
+        1:   47:         printf("Test case is passed\n");
+        -:   48:    }
+        1:   49:     char s=atoi("10");
+        -:   50:
+        1:   51:    if(checkStub(s,'x'))
+        -:   52:    {
+        1:   53:        printf("Testcase is passed\n");
+        -:   54:    }
+        1:   55:    if(checkStub('x','3'))
+        -:   56:    {
+        1:   57:        printf("Testcase is passed\n");
+        -:   58:    }
+        1:   59:    if(checkStub('2','0'))
+        -:   60:    {
+        1:   61:        printf("Testcase is passed\n");
+        -:   62:    }
+        1:   63:    if(checkStub('6','0'))
+        -:   64:    {
+        1:   65:        printf("Testcase is passed\n");
+        -:   66:    }
+        1:   67:    if(checkStub('0','x'))
+        -:   68:    {
+        1:   69:        printf("Testcase is passed\n");
+        -:   70:    }
+        -:   71:    
+        1:   72:}
+        -:   73:
+        2:   74:int end_stub(char x,char y,char z)
+        -:   75:{
+        2:   76:    if (x==y)
+        -:   77:    {
+        2:   78:        if (y==z)
+        2:   79:            return 1;
+        -:   80:    }
+    #####:   81:    return 0;
+        -:   82:}
+        -:   83:
+        1:   84:void End_stub()
+        -:   85:{
+        -:   86:     //testcase_of_end_function();
+        1:   87:    int actual=end_stub('x','x','x');
+        1:   88:    int expected=1;
+        1:   89:    assert(actual==expected);
+        1:   90:    printf("Assertion passed\n");
+        -:   91:
+        1:   92:    actual=end_stub('0','0','0');
+        1:   93:    expected=1;
+        1:   94:    assert(actual==expected);
+        1:   95:    printf("Assertion passed\n");
+        1:   96:}
+        -:   97:
+        -:   98:
+       14:   99:int checking_positions(char a[],int pos[])
+        -:  100:{
+       14:  101:    int i=0;
+       14:  102:    if(a[pos[i%3]]==a[pos[(i+1)%3]])
+        -:  103:    {
+       14:  104:        if(a[pos[(i+1)%3]]==a[pos[(i+2)%3]])
+        -:  105:        {
+       14:  106:            if(a[pos[i]]=='x')
+        -:  107:            {
+        7:  108:                printf("Player1 Wins\n");
+        7:  109:                return 1;
+        -:  110:            }
+        -:  111:            else
+        -:  112:            {
+        7:  113:                printf("Player2 Wins\n");
+        7:  114:                return 1;
+        -:  115:            }
+        -:  116:            
+        -:  117:        }
+        -:  118:    }
+    #####:  119:    return 0;
+        -:  120:}
+        1:  121:void checking_positions_stub()
+        -:  122:{
+        1:  123:    char a[9]={' ','x','x','x'};
+        1:  124:    int pos[3]={1,2,3};
+        1:  125:    int actual=checking_positions(a,pos);
+        1:  126:    int expected=1;
+        1:  127:    assert(actual==expected);
+        1:  128:    printf("Assertion passed\n");
+        -:  129:
+        1:  130:    char a1[9]={' ','0','0','0'};
+        1:  131:    int pos1[3]={1,2,3};
+        1:  132:    actual=checking_positions(a1,pos1);
+        1:  133:    expected=1;
+        1:  134:    assert(actual==expected);
+        1:  135:    printf("Assertion passed\n");
+        -:  136:
+        1:  137:    char a2[9]={' ','x',' ',' ','x',' ',' ','x'};
+        1:  138:    int pos2[3]={1,4,7};
+        1:  139:    actual=checking_positions(a2,pos2);
+        1:  140:    expected=1;
+        1:  141:    assert(actual==expected);
+        1:  142:    printf("Assertion passed\n");
+        -:  143:
+        1:  144:    char a3[9]={' ','0',' ',' ','0',' ',' ','0'};
+        1:  145:    int pos3[3]={1,4,7};
+        1:  146:    actual=checking_positions(a3,pos3);
+        1:  147:    expected=1;
+        1:  148:    assert(actual==expected);
+        1:  149:    printf("Assertion passed\n");
+        -:  150:
+        1:  151:    char a4[9]={' ',' ','x',' ',' ','x',' ',' ','x'};
+        1:  152:    int pos4[3]={2,5,8};
+        1:  153:    actual=checking_positions(a4,pos4);
+        1:  154:    expected=1;
+        1:  155:    assert(actual==expected);
+        1:  156:    printf("Assertion passed\n");
+        -:  157:
+        1:  158:    char a5[9]={' ',' ','0',' ',' ','0',' ',' ','0'};
+        1:  159:    int pos5[3]={2,5,8};
+        1:  160:    actual=checking_positions(a5,pos5);
+        1:  161:    expected=1;
+        1:  162:    assert(actual==expected);
+        1:  163:    printf("Assertion passed\n");
+        -:  164:
+        1:  165:    char a6[10]={' ',' ',' ','x',' ',' ','x',' ',' ','x'};
+        1:  166:    int pos6[3]={3,6,9};
+        1:  167:    actual=checking_positions(a6,pos6);
+        1:  168:    expected=1;
+        1:  169:    assert(actual==expected);
+        1:  170:    printf("Assertion passed\n");
+        -:  171:
+        1:  172:    char a7[10]={' ',' ',' ','0',' ',' ','0',' ',' ','0'};
+        1:  173:    int pos7[3]={3,6,9};
+        1:  174:    actual=checking_positions(a7,pos7);
+        1:  175:    expected=1;
+        1:  176:    assert(actual==expected);
+        1:  177:    printf("Assertion passed\n");
+        -:  178:
+        1:  179:    char a8[9]={' ',' ',' ','x',' ','x',' ','x'};
+        1:  180:    int pos8[3]={3,5,7};
+        1:  181:    actual=checking_positions(a8,pos8);
+        1:  182:    expected=1;
+        1:  183:    assert(actual==expected);
+        1:  184:    printf("Assertion passed\n");
+        -:  185:
+        1:  186:    char a9[9]={' ',' ',' ','0',' ','0',' ','0'};
+        1:  187:    int pos9[3]={3,5,7};
+        1:  188:    actual=checking_positions(a9,pos9);
+        1:  189:    expected=1;
+        1:  190:    assert(actual==expected);
+        1:  191:    printf("Assertion passed\n");
+        -:  192:
+        1:  193:    char a10[10]={' ','x',' ',' ',' ','x',' ',' ',' ','x'};
+        1:  194:    int pos10[3]={1,5,9};
+        1:  195:    actual=checking_positions(a10,pos10);
+        1:  196:    expected=1;
+        1:  197:    assert(actual==expected);
+        1:  198:    printf("Assertion passed\n");
+        -:  199:
+        1:  200:    char a11[10]={' ','0',' ',' ',' ','0',' ',' ',' ','0'};
+        1:  201:    int pos11[3]={1,5,9};
+        1:  202:    actual=checking_positions(a11,pos11);
+        1:  203:    expected=1;
+        1:  204:    assert(actual==expected);
+        1:  205:    printf("Assertion passed\n");
+        -:  206:
+        1:  207:    char a12[9]={' ',' ',' ',' ','x','x','x'};
+        1:  208:    int pos12[3]={4,5,6};
+        1:  209:    actual=checking_positions(a12,pos12);
+        1:  210:    expected=1;
+        1:  211:    assert(actual==expected);
+        1:  212:    printf("Assertion passed\n");
+        -:  213:
+        1:  214:    char a13[9]={' ',' ',' ',' ','0','0','0'};
+        1:  215:    int pos13[3]={4,5,6};
+        1:  216:    actual=checking_positions(a13,pos13);
+        1:  217:    expected=1;
+        1:  218:    assert(actual==expected);
+        1:  219:    printf("Assertion passed\n");
+        -:  220:
+        1:  221:}
+        -:  222:
+       14:  223:int rock_paper_scissors_stub(char player1_choice[],char player2_choice[])
+        -:  224:{
+       14:  225:        if (strcmp(player1_choice, player2_choice) == 0) 
+        -:  226:        {
+        3:  227:            printf("\nIt's a tie!\n");
+        3:  228:            return 1;
+        -:  229:        }
+       11:  230:        else if (
+       23:  231:            (strcmp(player1_choice, "rock") == 0 && strcmp(player2_choice, "scissors") == 0) ||
+       21:  232:            (strcmp(player1_choice, "scissors") == 0 && strcmp(player2_choice, "paper") == 0) ||
+       12:  233:            (strcmp(player1_choice, "paper") == 0 && strcmp(player2_choice, "rock") == 0)
+        -:  234:        ) 
+        -:  235:        {
+        3:  236:            printf("\nPlayer_1 Wins\n");
+        3:  237:            return 1;
+        -:  238:        }
+        8:  239:        else if (
+        9:  240:            ((strcmp(player1_choice, "rock") == 0 && strcmp(player2_choice, "paper") == 0)) || (strcmp(player1_choice, "scissors") == 0 && strcmp(player2_choice, "rock") == 0) || (strcmp(player1_choice, "paper") == 0 && strcmp(player2_choice, "scissors") == 0))
+        -:  241:        
+        -:  242:        {
+        3:  243:            printf("\nPlayer_2 Wins\n");
+        3:  244:            return 1;
+        -:  245:        }
+        -:  246:        else
+        -:  247:        {
+        5:  248:            printf("\nyou entered wrong!!!!!\nplease try again\n");
+        5:  249:            return 1;
+        -:  250:        }
+        -:  251:        return 0;
+        -:  252:}
+        -:  253:
+        1:  254:void rock_paper_scissors()
+        -:  255:{
+        1:  256:    char player1_choice[]="rock";
+        1:  257:    char player2_choice[]="scissors";
+        1:  258:    int actual=rock_paper_scissors_stub(player1_choice,player2_choice);
+        1:  259:    int expected=1;
+        1:  260:    assert(actual==expected);
+        1:  261:    printf("Assertion passed\n");
+        -:  262:
+        1:  263:    char player1_choice1[]="paper";
+        1:  264:    char player2_choice1[]="scissors";
+        1:  265:    actual=rock_paper_scissors_stub(player1_choice1,player2_choice1);
+        1:  266:    expected=1;
+        1:  267:    assert(actual==expected);
+        1:  268:    printf("Assertion passed\n");
+        -:  269:
+        1:  270:    char player1_choice2[]="rock";
+        1:  271:    char player2_choice2[]="paper";
+        1:  272:    actual=rock_paper_scissors_stub(player1_choice2,player2_choice2);
+        1:  273:    expected=1;
+        1:  274:    assert(actual==expected);
+        1:  275:    printf("Assertion passed\n");
+        -:  276:
+        1:  277:    char player1_choice3[]="paper";
+        1:  278:    char player2_choice3[]="rock";
+        1:  279:    actual=rock_paper_scissors_stub(player1_choice3,player2_choice3);
+        1:  280:    expected=1;
+        1:  281:    assert(actual==expected);
+        1:  282:    printf("Assertion passed\n");
+        -:  283:
+        1:  284:    char player1_choice4[]="scissors";
+        1:  285:    char player2_choice4[]="rock";
+        1:  286:    actual=rock_paper_scissors_stub(player1_choice4,player2_choice4);
+        1:  287:    expected=1;
+        1:  288:    assert(actual==expected);
+        1:  289:    printf("Assertion passed\n");
+        -:  290:
+        1:  291:    char player1_choice5[]="scissors";
+        1:  292:    char player2_choice5[]="paper";
+        1:  293:    actual=rock_paper_scissors_stub(player1_choice5,player2_choice5);
+        1:  294:    expected=1;
+        1:  295:    assert(actual==expected);
+        1:  296:    printf("Assertion passed\n");
+        -:  297:
+        1:  298:    char player1_choice6[]="scissors";
+        1:  299:    char player2_choice6[]="scissors";
+        1:  300:    actual=rock_paper_scissors_stub(player1_choice6,player2_choice6);
+        1:  301:    expected=1;
+        1:  302:    assert(actual==expected);
+        1:  303:    printf("Assertion passed\n");
+        -:  304:
+        1:  305:    char player1_choice7[]="paper";
+        1:  306:    char player2_choice7[]="paper";
+        1:  307:    actual=rock_paper_scissors_stub(player1_choice7,player2_choice7);
+        1:  308:    expected=1;
+        1:  309:    assert(actual==expected);
+        1:  310:    printf("Assertion passed\n");
+        -:  311:
+        1:  312:    char player1_choice8[]="rock";
+        1:  313:    char player2_choice8[]="rock";
+        1:  314:    actual=rock_paper_scissors_stub(player1_choice8,player2_choice8);
+        1:  315:    expected=1;
+        1:  316:    assert(actual==expected);
+        1:  317:    printf("Assertion passed\n");
+        -:  318:
+        1:  319:    char player1_choice9[]="rojbjk";
+        1:  320:    char player2_choice9[]="rock";
+        1:  321:    actual=rock_paper_scissors_stub(player1_choice9,player2_choice9);
+        1:  322:    expected=1;
+        1:  323:    assert(actual==expected);
+        1:  324:    printf("Assertion passed\n");
+        -:  325:
+        1:  326:    char player1_choice10[]="rojbjk";
+        1:  327:    char player2_choice10[]="padkjwk";
+        1:  328:    actual=rock_paper_scissors_stub(player1_choice10,player2_choice10);
+        1:  329:    expected=1;
+        1:  330:    assert(actual==expected);
+        1:  331:    printf("Assertion passed\n");
+        -:  332:
+        1:  333:    char player1_choice11[]="paper";
+        1:  334:    char player2_choice11[]="vwuye";
+        1:  335:    actual=rock_paper_scissors_stub(player1_choice11,player2_choice11);
+        1:  336:    expected=1;
+        1:  337:    assert(actual==expected);
+        1:  338:    printf("Assertion passed\n");
+        -:  339:
+        1:  340:    char player1_choice12[]=" ";
+        1:  341:    char player2_choice12[]=" ";
+        1:  342:    actual=rock_paper_scissors_stub(player1_choice9,player2_choice9);
+        1:  343:    expected=1;
+        1:  344:    assert(actual==expected);
+        1:  345:    printf("Assertion passed\n");
+        -:  346:
+        1:  347:    char player1_choice13[]=" ";
+        1:  348:    char player2_choice13[]="paper";
+        1:  349:    actual=rock_paper_scissors_stub(player1_choice13,player2_choice13);
+        1:  350:    expected=1;
+        1:  351:    assert(actual==expected);
+        1:  352:    printf("Assertion passed\n");
+        -:  353:
+        1:  354:}
+        -:  355:
+        7:  356:int guessing_random_number_stub(int rand_number,int guess)
+        -:  357:{
+        -:  358:	
+        7:  359:        printf("Welcome to the Random Number Guessing Game!\n");
+        7:  360:        printf("Guess the number (1-100): ");
+        -:  361:    
+        7:  362:        if((rand_number>100 || rand_number<1) || (guess>100 || guess<1))
+        -:  363:        {
+    #####:  364:            printf("Entered incorrect range\n");
+        -:  365:        }
+        7:  366:        else if (guess > rand_number) 
+        -:  367:        {
+        3:  368:            printf("Higher value..from your guessing...please try again...\n");
+        3:  369:            return 1;
+        4:  370:        } else if (guess < rand_number) {
+        1:  371:            printf("Lower value..from your guessing...please try again....\n");
+        1:  372:            return 1;
+        -:  373:        } else {
+        3:  374:            printf("Congratulations! You guessed the number \n");
+        3:  375:            return 1;
+        -:  376:        }
+    #####:  377:        return 0;
+        -:  378:
+        -:  379:}
+        -:  380:
+        1:  381:void Guessing_Random_Number_Stub()
+        -:  382:{
+        1:  383:    int rand_number=98,guess=20;
+        1:  384:    int actual=guessing_random_number_stub(rand_number,guess);
+        1:  385:    int expected=1;
+        1:  386:    assert(actual==expected);
+        1:  387:    printf("Assertion passed\n");
+        -:  388:
+        1:  389:    rand_number=98,guess=100;
+        1:  390:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  391:    expected=1;
+        1:  392:    assert(actual==expected);
+        1:  393:    printf("Assertion passed\n");
+        -:  394:
+        1:  395:    rand_number=98,guess=98;
+        1:  396:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  397:    expected=1;
+        1:  398:    assert(actual==expected);
+        1:  399:    printf("Assertion passed\n");
+        -:  400:
+        1:  401:    rand_number=98,guess=98;
+        1:  402:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  403:    expected=1;
+        1:  404:    assert(actual==expected);
+        1:  405:    printf("Assertion passed\n");
+        -:  406:
+        1:  407:    rand_number=90,guess=91;
+        1:  408:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  409:    expected=1;
+        1:  410:    assert(actual==expected);
+        1:  411:    printf("Assertion passed\n");
+        -:  412:
+        1:  413:    rand_number=23,guess=98;
+        1:  414:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  415:    expected=1;
+        1:  416:    assert(actual==expected);
+        1:  417:    printf("Assertion passed\n");
+        -:  418:
+        1:  419:    rand_number=90,guess=90;
+        1:  420:    actual=guessing_random_number_stub(rand_number,guess);
+        1:  421:    expected=1;
+        1:  422:    assert(actual==expected);
+        1:  423:    printf("Assertion passed\n");
+        -:  424:
+        -:  425:
+        1:  426:}
+        1:  427:int main()
+        -:  428:{
+        1:  429:        printf("\n******************TIC-TAC-TOE TESTCASES AND STUBS**********************\n");
+        1:  430:        printf("\n----Check_Stub is called----\n\n");
+        1:  431:        testcaseofcheck();
+        -:  432:
+        1:  433:        printf("\n----End_stub is called----\n\n");
+        1:  434:        End_stub();
+        -:  435:
+        1:  436:        printf("\n----checking_positions is called----\n\n");
+        1:  437:        checking_positions_stub();
+        -:  438:
+        1:  439:        printf("\n******************ROCK_PAPER_SCISSORS TESTCASES AND STUBS**********************\n");
+        1:  440:        rock_paper_scissors();
+        -:  441:        
+        1:  442:        printf("\n*************GUESSING_RANDOM_NUMBER TESTCASES AND STUBS*****************\n\n");
+        -:  443:
+        1:  444:        Guessing_Random_Number_Stub();
+        -:  445:
+        1:  446:        printf("\n\n");
+        -:  447:
+        -:  448:
+        -:  449:}
+        -:  450:
