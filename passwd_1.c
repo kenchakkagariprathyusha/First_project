@@ -7,6 +7,9 @@
 //#define ENTER 13
 //#define TAB 9
 //#define BCKSPC 8
+// pratuyusshssh
+// dsklahfkadjfhdfhds
+// dkjfhdjkfh
 void passk(char* data)
 {
 	//char data[20];
